@@ -1,0 +1,78 @@
+<!Doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" th:href="@{/css/style.css}" />
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"  />
+		<title>Contact App - lista kontaktów</title>
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+				<a class="navbar-brand" href="/" th:text="${appName}"></a>
+			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			    <span class="navbar-toggler-icon"></span>
+			  </button>
+			
+			  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+			    <ul class="navbar-nav mr-auto">
+			      <li class="nav-item active">
+			        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+			      </li>
+			      
+			      <li class="nav-item dropdown">
+			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			          Contact Menu
+			        </a>
+			        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			          <a class="dropdown-item" th:href="@{/contacts/list}">Lista Kontaktów</a>
+			          <a class="dropdown-item" th:href="@{/contacts/addContact}">Dodaj Kontakt</a>
+			        </div>
+			      </li>
+			    </ul>
+			    <form class="form-inline my-2 my-lg-0">
+			      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+			      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+			    </form>
+			  </div>
+		</nav>
+		
+		<div class="container mt-5">
+			<div class="jumbotron">
+		  		<h1 class="display-4 font-weight-bold text-center animation text-success" th:text="${appName}"></h1>
+		 		<p class="lead font-weight-bolder text-center animation-two">Lista Kontaktów</p>
+		  		<hr class="my-4">
+		  		<div class="animation">
+		  			<div class="text-center">
+		  				<a th:href="@{/contacts/addContact}" class="btn btn-outline-primary">Utwórz kontakt</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-md-6 col-lg-4 mb-3" th:each="contact : ${contacts}">
+					<div class="card" >
+					  <h5 class="card-header">
+						<span th:text="${contact.firstName}"></span>
+					    <span th:text="${contact.lastName}"></span>
+					  </h5>
+					  <div class="card-body">
+					    <h5 class="card-title">Telefon: <span th:text="${contact.phone}"></span></h5>
+					    <p class="card-text">Address: <span th:text="${contact.address}"></span></p>
+					    <p class="card-text">Email: <span th:text="${contact.email}"></span></p>
+					    <p class="card-text">Data utworzenia: <span th:text="${contact.date}"></span></p>
+					     <div class="card-footer text-muted d-flex justify-content-around">
+						    <a th:href="@{/contacts/updateContact(contactId=${contact.id})}" class="btn btn-primary">Edytuj</a>
+						    <a th:href="@{/contacts/deleteContact(contactId=${contact.id})}" class="btn btn-danger">Usuń</a>
+						  </div>
+					  </div>
+					</div>
+				</div>
+			</div>	
+		</div>
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	</body>
+</html>

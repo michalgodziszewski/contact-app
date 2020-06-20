@@ -1,0 +1,44 @@
+.animation{
+	opacity:0;
+	animation: text-animation 1s .5s both;
+} 
+
+.animation-two{
+	opacity:0;
+	animation: text-animation-two 1s 1s both;
+}
+
+.jumbotron {
+	opacity:0;
+	animation: jumb-animation 1s both;
+}
+
+@keyframes jumb-animation {
+	100%{
+		opacity:1;
+	}
+}
+
+@keyframes text-animation {
+	0% {
+		padding-left: 100px;
+	
+	}
+	100% {
+		padding-left: 0;
+		opacity:1;
+	}
+}
+
+@keyframes text-animation-two {
+	0% {
+		padding-right: 100px;
+	
+	}
+	100% {
+		padding-right: 0;
+		opacity:1;
+	}
+}
+
+
