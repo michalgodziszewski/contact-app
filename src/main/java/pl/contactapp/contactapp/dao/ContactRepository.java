@@ -10,4 +10,6 @@ import pl.contactapp.contactapp.entity.Contact;
 public interface ContactRepository extends JpaRepository<Contact, Integer> {
 	
 	public List<Contact> findAllByOrderByLastNameAsc();
+	
+	public List<Contact> findByLastName(String searchText);
 }

@@ -14,4 +14,6 @@ public interface ContactService {
 	
 	public void deleteContactById(int theId);
 
+	public List<Contact> getSeatchContacts(String searchText);
+
 }

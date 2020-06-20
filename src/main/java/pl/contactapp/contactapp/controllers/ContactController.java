@@ -76,7 +76,16 @@ public class ContactController {
 		return "redirect:/contacts/list";
 	}
 	
-	
+	@GetMapping("/searchContacts")
+	public String searchContacts(@RequestParam("searchText") String searchText, Model model) {
+		
+		List<Contact> contacts = contactService.getSeatchContacts(searchText);
+		
+		model.addAttribute("contacts", contacts);
+		model.addAttribute("appName", "Contact App");
+		
+		return "contacts/contacts-list";
+	}
 	
 	
 	

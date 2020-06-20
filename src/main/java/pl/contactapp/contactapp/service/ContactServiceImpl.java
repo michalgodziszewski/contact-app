@@ -49,4 +49,10 @@ public class ContactServiceImpl implements ContactService {
 		contactRepository.deleteById(theId);
 	}
 
+	@Override
+	public List<Contact> getSeatchContacts(String searchText) {
+		
+		return contactRepository.findByLastName(searchText);
+	}
+
 }
